@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  ubuntu:
+    image: ubuntu:latest
+    container_name: ubuntu_container
+    command: sleep infinity
+    tty: true
+    stdin_open: true
+    platform: linux/amd64   # Force x86_64 architecture
+    volumes:
+      - ./data:/data
+    networks:
+      - default
+
+networks:
+  default:
+    driver: bridge
