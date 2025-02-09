@@ -1,3 +1,6 @@
+
+
+
 defn bshelper (xs, i, n, v) :
    if n == 1 :
       if xs[i] == v : i
