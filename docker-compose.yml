@@ -1,18 +1,17 @@
-version: '3.8'
-
 services:
-  ubuntu:
-    image: ubuntu:latest
-    container_name: ubuntu_container
+  ubuntu_closest:
+    image: ubuntu:14.04  # Use Ubuntu 14.04 instead of 12.04
+    container_name: ubuntu_closest_container
     command: sleep infinity
     tty: true
     stdin_open: true
-    platform: linux/amd64   # Force x86_64 architecture
+    platform: linux/amd64
     volumes:
       - ./data:/data
     networks:
       - default
-
-networks:
-  default:
-    driver: bridge
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp=unconfined
+    privileged: true  # 🔥 Full privileges
